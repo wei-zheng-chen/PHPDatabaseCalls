@@ -20,8 +20,8 @@ print $map
 
 
 
-$sql = "UPDATE doctors (doctor_id, doctorName, doctorPhoneNumber, doctorAddress) 
-		SET (".$_GET['doctor_id'].", ".$_GET['doctorName'].", ".$_GET['doctorPhoneNumber'].", ".$_GET['doctorAddress'].")";
+//$sql = "UPDATE doctors (doctor_id, doctorName, doctorPhoneNumber, doctorAddress) 
+//		SET (".$_GET['doctor_id'].", ".$_GET['doctorName'].", ".$_GET['doctorPhoneNumber'].", ".$_GET['doctorAddress'].")";
 
 if ($con->query($sql) == TRUE) {
     echo "New record created successfully";
