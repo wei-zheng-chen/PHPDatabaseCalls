@@ -9,6 +9,7 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
+//insert a doct into table
 $sql = "INSERT INTO doctors (doctorName, doctorPhoneNumber, doctorAddress) 
 		VALUES (".$_GET['doctorName'].", ".$_GET['doctorPhoneNumber'].", ".$_GET['doctorAddress'].")";
 
@@ -17,35 +18,49 @@ if ($con->query($sql) == TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
+//end of insert doc
 
 
+//query for the id of the doc that has been entered
 $patientID = $_GET['patient_id'];
 $query = "SELECT doctor_id FROM doctors WHERE doctorName = ".$_GET['doctorName']." AND doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." ANDdoctorAddress = ".$_GET['doctorAddress'];
+$resultArray = array();
 
-$result = $mysql_query($query,$con);
+if($result = $mysqli_query($con,$query)){
+	// If so, then create a results array and a temporary one
+    // to hold the data
+    $tempArray = array();
 
-if (!$result) {
-    die('Could not query:' . mysql_error());
-}
-
-if($patientID != ""){
-$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
-			  VALUES(".$patientID.", ". mysql_result($result, 0) .")";
-
-
-if ($con->query($sqlUpdate) == TRUE) {
-    echo "New record in patients_doctors created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $con->error;
-}
-
-
+    // Loop through each row in the result set
+    while($row = $result->fetch_object())
+    {
+        // Add each row into our results array
+        $tempArray = $row;
+        array_push($resultArray, $tempArray);
+    }
 }
 
 
+echo $resultArray;
+
+// if($patientID != "" && !empty($resultArray)){
+// $sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
+// 			  VALUES(".$patientID.", ". $resultArray .")";
+
+
+// if ($con->query($sqlUpdate) == TRUE) {
+//     echo "New record in patients_doctors created successfully";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $con->error;
+// }
+
+
+// }
 
 
 
+
+mysqli_close($result);
 mysqli_close($con);
 
 ?>
