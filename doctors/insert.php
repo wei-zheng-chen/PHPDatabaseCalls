@@ -25,10 +25,13 @@ $result = mysql_query("SELECT doctor_id
 			  						 WHERE doctorName = ".$_GET['doctorName']." AND 
 			  						 doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." AND
 			  						 doctorAddress = ".$_GET['doctorAddress']);
+if (!$result) {
+    die('Could not query:' . mysql_error());
+}
 
 if($patientID != ""){
 $sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
-			  VALUES(".$patientID.", ".$result[0] .")";
+			  VALUES(".$patientID.", ". mysql_result($result, 0) .")";
 
 if ($con->query($sqlUpdate) == TRUE) {
     echo "New record in patients_doctors created successfully";
