@@ -9,7 +9,6 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-
 $sql = "INSERT INTO doctors (doctorName, doctorPhoneNumber, doctorAddress) 
 		VALUES (".$_GET['doctorName'].", ".$_GET['doctorPhoneNumber'].", ".$_GET['doctorAddress'].")";
 
@@ -18,6 +17,34 @@ if ($con->query($sql) == TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
+
+
+$patientID = $_GET['patient_id'];
+
+if($patientID != ""){
+$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
+			  VALUES(".$patientID.", SELECT doctor_id 
+			  						 FROM doctors 
+			  						 WHERE doctorName = ".$_GET['doctorName']."AND 
+			  						 doctorPhoneNumber = " .$_GET['doctorPhoneNumber']."AND
+			  						 doctorAddress = ".$_GET['doctorAddress'].")";
+
+if ($con->query($sqlUpdate) == TRUE) {
+    echo "New record in patients_doctors created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $con->error;
+}
+
+
+}
+
+
+
+
+
+
+
+
 
 mysqli_close($con);
 
