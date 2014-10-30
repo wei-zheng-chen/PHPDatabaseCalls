@@ -20,6 +20,7 @@ if ($con->query($sql) == TRUE) {
 }
 //end of insert doc
 
+$patientID = $_GET['patient_id'];
 
 if($patientID != ""){
 $sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
