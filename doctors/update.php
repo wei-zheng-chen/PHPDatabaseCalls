@@ -14,7 +14,7 @@ $sql = "UPDATE doctors
 		SET doctorName = ".$_GET['doctorName'].",
 		 	doctorPhoneNumber = ".$_GET['doctorPhoneNumber'].", 
 		 	doctorAddress = ".$_GET['doctorAddress']."
-		WHERE doctor_id = "$_GET['doctor_id'].;
+		WHERE doctor_id = ".$_GET['doctor_id'];
 
 
 if ($con->query($sql) == TRUE) {
