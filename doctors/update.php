@@ -9,19 +9,13 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$doctor_id = "doctor_id";
-$doctorName = "doctorName";
-$doctorPhoneNumber = "doctorPhoneNumber";
-$doctorAddress = "doctorAddress";
 
-$map = [$_GET[$doctor_id], $_GET[$doctorName], $_GET[$doctorPhoneNumber], $_GET[$doctorAddress]];
+$sql = "UPDATE doctors
+		SET doctorName = ".$_GET['doctorName'].",
+		 	doctorPhoneNumber = ".$_GET['doctorPhoneNumber'].", 
+		 	doctorAddress = ".$_GET['doctorAddress']."
+		WHERE doctor_id = "$_GET['doctor_id'].;
 
-print $map;
-
-
-
-//$sql = "UPDATE doctors (doctor_id, doctorName, doctorPhoneNumber, doctorAddress) 
-//		SET (".$_GET['doctor_id'].", ".$_GET['doctorName'].", ".$_GET['doctorPhoneNumber'].", ".$_GET['doctorAddress'].")";
 
 if ($con->query($sql) == TRUE) {
     echo "New record created successfully";
