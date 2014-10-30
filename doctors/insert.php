@@ -23,7 +23,8 @@ if ($con->query($sql) == TRUE) {
 
 //query for the id of the doc that has been entered
 $patientID = $_GET['patient_id'];
-$query = "SELECT doctor_id FROM doctors WHERE doctorName = ".$_GET['doctorName']." AND doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." ANDdoctorAddress = ".$_GET['doctorAddress'];
+$query = "SELECT doctor_id FROM doctors WHERE doctorName = 'JOE' AND doctorPhoneNumber = '238404034834034' AND doctorAddress = 'jack street'";
+
 $resultArray = array();
 
 if($result = $mysqli_query($con,$query)){
@@ -38,6 +39,7 @@ if($result = $mysqli_query($con,$query)){
         $tempArray = $row;
         array_push($resultArray, $tempArray);
     }
+    echo "im in here";
 }
 
 
