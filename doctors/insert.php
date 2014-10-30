@@ -21,48 +21,22 @@ if ($con->query($sql) == TRUE) {
 //end of insert doc
 
 
-//query for the id of the doc that has been entered
-$patientID = $_GET['patient_id'];
-$query = "SELECT doctor_id FROM doctors WHERE doctorName = 'JOE' AND doctorPhoneNumber = '238404034834034' AND doctorAddress = 'jack street'";
+if($patientID != ""){
+$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
+			  VALUES(".$patientID.", ". $con->insert_id .")";
 
-$resultArray = array();
 
-if($result = $mysqli_query($con,$query)){
-	// If so, then create a results array and a temporary one
-    // to hold the data
-    $tempArray = array();
+if ($con->query($sqlUpdate) == TRUE) {
+    echo "New record in patients_doctors created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $con->error;
+}
 
-    // Loop through each row in the result set
-    while($row = $result->fetch_object())
-    {
-        // Add each row into our results array
-        $tempArray = $row;
-        array_push($resultArray, $tempArray);
-    }
-    echo "im in here";
 }
 
 
-echo $resultArray;
-
-// if($patientID != "" && !empty($resultArray)){
-// $sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
-// 			  VALUES(".$patientID.", ". $resultArray .")";
 
 
-// if ($con->query($sqlUpdate) == TRUE) {
-//     echo "New record in patients_doctors created successfully";
-// } else {
-//     echo "Error: " . $sql . "<br>" . $con->error;
-// }
-
-
-// }
-
-
-
-
-mysqli_close($result);
 mysqli_close($con);
 
 ?>
