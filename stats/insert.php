@@ -9,7 +9,7 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$sql = "INSERT INTO stats(stat_id, statName, statUnit) 
+$sql = "INSERT INTO stats(statName, statUnit) 
 		VALUES (".$_GET['statName'].", ".$_GET['statUnit'].")";
 
 if ($con->query($sql) == TRUE) {
