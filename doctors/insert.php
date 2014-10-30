@@ -20,9 +20,9 @@ if ($con->query($sql) == TRUE) {
 
 
 $patientID = $_GET['patient_id'];
-$query = "SELECT doctor_id FROM doctors WHERE doctorName = ".$_GET['doctorName']." AND doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." ANDdoctorAddress = ".$_GET['doctorAddress']
+$query = "SELECT doctor_id FROM doctors WHERE doctorName = ".$_GET['doctorName']." AND doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." ANDdoctorAddress = ".$_GET['doctorAddress'];
 
-$result = $con->query($query);
+$result = $mysql_query($query,$con);
 
 if (!$result) {
     die('Could not query:' . mysql_error());
@@ -31,7 +31,7 @@ if (!$result) {
 if($patientID != ""){
 $sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
 			  VALUES(".$patientID.", ". mysql_result($result, 0) .")";
-}
+
 
 if ($con->query($sqlUpdate) == TRUE) {
     echo "New record in patients_doctors created successfully";
@@ -41,10 +41,6 @@ if ($con->query($sqlUpdate) == TRUE) {
 
 
 }
-
-
-
-
 
 
 
