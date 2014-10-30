@@ -20,7 +20,7 @@ if ($con->query($sql) == TRUE) {
 
 
 $patientID = $_GET['patient_id'];
-$result = mysql_query("SELECT doctor_id 
+$result = $con->query("SELECT doctor_id 
 			  						 FROM doctors 
 			  						 WHERE doctorName = ".$_GET['doctorName']." AND 
 			  						 doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." AND
