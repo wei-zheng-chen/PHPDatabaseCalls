@@ -10,7 +10,7 @@ if (mysqli_connect_errno())
 }
 
 $sql = "INSERT INTO stats(stat_id, statName, statUnit) 
-		VALUES (".$_GET['stat_id'].", ".$_GET['statName'].", ".$_GET['statUnit'].")";
+		VALUES (".$_GET['statName'].", ".$_GET['statUnit'].")";
 
 if ($con->query($sql) == TRUE) {
     echo "New record created successfully";
