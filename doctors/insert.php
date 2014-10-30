@@ -20,14 +20,15 @@ if ($con->query($sql) == TRUE) {
 
 
 $patientID = $_GET['patient_id'];
-
-if($patientID != ""){
-$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
-			  VALUES(".$patientID.", SELECT doctor_id 
+$result = mysql_query("SELECT doctor_id 
 			  						 FROM doctors 
 			  						 WHERE doctorName = ".$_GET['doctorName']." AND 
 			  						 doctorPhoneNumber = " .$_GET['doctorPhoneNumber']." AND
-			  						 doctorAddress = ".$_GET['doctorAddress'].")";
+			  						 doctorAddress = ".$_GET['doctorAddress']);
+
+if($patientID != ""){
+$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
+			  VALUES(".$patientID.", ".$result[0] .")";
 
 if ($con->query($sqlUpdate) == TRUE) {
     echo "New record in patients_doctors created successfully";
