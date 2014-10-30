@@ -9,7 +9,7 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$sql = "SELECT ".$_GET['attribute'] ." FROM doctors WHERE id = '" .$_GET['doctor_id']."'";
+$sql = "SELECT ".$_GET['attribute'] ." FROM doctors WHERE id = " .$_GET['doctor_id'];
 
 // Check if there are results
 if ($result = mysqli_query($con, $sql))
