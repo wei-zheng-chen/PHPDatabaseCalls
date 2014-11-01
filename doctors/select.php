@@ -15,7 +15,7 @@ $sql = "SELECT ".$_GET['attribute'] ."
         IN (
             SELECT doctor_id 
             FROM patients_doctors 
-            WHERE patient_id = ". $_GET['patient_id']);
+            WHERE patient_id = ".$_GET['patient_id']." )";
 
 // Check if there are results
 if ($result = mysqli_query($con, $sql))
