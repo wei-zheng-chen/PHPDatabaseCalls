@@ -36,8 +36,6 @@ if ($con->query($sqlUpdate) == TRUE) {
 }
 
 
-
-
 mysqli_close($con);
 
 ?>
