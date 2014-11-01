@@ -10,12 +10,12 @@ if (mysqli_connect_errno())
 }
 
 $sql = "SELECT ".$_GET['attribute'] ." 
-        FROM doctor 
+        FROM doctors 
         WHERE doctor_id 
         IN (
             SELECT doctor_id 
             FROM patients_doctors 
-            WHERE patients_id = ". $_GET['patients_id']);
+            WHERE patient_id = ". $_GET['patient_id']);
 
 // Check if there are results
 if ($result = mysqli_query($con, $sql))
