@@ -12,7 +12,7 @@ if(mysqli_connect_errno()){
 $sql = "DELETE FROM doctors WHERE doctor_id = ".$_GET['doctor_id']; 
 
 if($con->query($sql) == TRUE){
-	echo "deletion of a doctor is successful\n"
+	echo "deletion of a doctor is successful\n";
 	// update patient_doctor table to relect the change
 	$sql = "DELETE FROM patients_doctors WHERE doctor_id = ".$_GET['doctor_id'];
 	if($con->query($sql) == TRUE){
