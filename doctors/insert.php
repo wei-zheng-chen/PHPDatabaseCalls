@@ -15,25 +15,26 @@ $sql = "INSERT INTO doctors (doctorName, doctorPhoneNumber, doctorAddress)
 
 if ($con->query($sql) == TRUE) {
     echo "New record created successfully\n";
+	$patientID = $_GET['patient_id'];
+
+	if($patientID != ""){
+	$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
+			  VALUES(".$patientID.", ". $con->insert_id .")";
+
+
+	if ($con->query($sqlUpdate) == TRUE) {
+   	 	echo "New record in patients_doctors created successfully";
+	} else {
+    	echo "Error: " . $sql . "<br>" . $con->error;
+	}
+
+	}
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
 //end of insert doc
 
-$patientID = $_GET['patient_id'];
 
-if($patientID != ""){
-$sqlUpdate = "INSERT INTO patients_doctors (patient_id, doctor_id)
-			  VALUES(".$patientID.", ". $con->insert_id .")";
-
-
-if ($con->query($sqlUpdate) == TRUE) {
-    echo "New record in patients_doctors created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $con->error;
-}
-
-}
 
 
 mysqli_close($con);
