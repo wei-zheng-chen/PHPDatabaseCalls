@@ -29,12 +29,12 @@ if ($con->query($sql) == TRUE) {
 		if ($con->query($sqlUpdate)) {
    	 		echo "New record in patients_doctors created successfully";
 		} else {
-    		echo "Error: " . $sql . "<br>" . $con->error;
+    		echo "Error: " . $sql . "<br>" . $con->error ."\n";
     		
     		$sqlUpdate = "DELETE FROM doctors 
     					  WHERE doctor_id =" .$con->insert_id;
     		if($con->query($sqlUpdate)){
-    			echo "the recently inserted doctor has been removed from the database since patients did not exist";
+    			echo "The recently inserted doctor has been removed from the database since patients did not exist";
     		}
 		}
 	}
