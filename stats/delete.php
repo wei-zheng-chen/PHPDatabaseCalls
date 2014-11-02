@@ -12,7 +12,7 @@ if(mysqli_connect_errno()){
 $sql = "DELETE FROM stats WHERE stat_id = ".$_GET['stat_id']; 
 
 if($con->query($sql) == TRUE){
-	echo "deletion of a patient is successful\n";
+	echo "deletion of a stats is successful\n";
 
 		//update bounds
 	$sql = "DELETE FROM bounds WHERE stat_id = ".$_GET['stat_id'];
