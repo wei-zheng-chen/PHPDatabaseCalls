@@ -10,7 +10,7 @@ if (mysqli_connect_errno())
 }
 
 $sql = "INSERT INTO notifications (patient_id, recipientName, recipientPhoneNumber, callsOn, textsOn) 
-		VALUES (".$_GET['patient_id'].", ".$_GET['recipientName'].", ".$_GET['recipientPhoneNumber'].", ".$_GET['callsOn'].", ".$_GET['textsOn'].")";
+		VALUES (".$_GET['patient_id'].", ".$_GET['recipientName'].", ".$_GET['recipientPhoneNumber'].")";
 
 if ($con->query($sql) == TRUE) {
     echo "New record created successfully";
