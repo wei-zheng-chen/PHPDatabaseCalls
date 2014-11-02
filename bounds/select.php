@@ -11,7 +11,7 @@ if (mysqli_connect_errno())
 
 $sql = "SELECT ".$_GET['attribute'] ." 
         FROM bounds 
-        WHERE patient_id ".$_GET['patient_id'];
+        WHERE patient_id = ".$_GET['patient_id'];
 
 if($_GET['stat_id']){
     $sql = $sql ." AND stat_id = ". $_GET['stat_id'];
