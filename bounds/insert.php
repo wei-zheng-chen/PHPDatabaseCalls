@@ -10,10 +10,7 @@ if (mysqli_connect_errno())
 }
 
 $sql = "INSERT INTO bounds (patient_id, stat_id, statLowerBound, statUpperBound) 
-		VALUES (".$_GET['patient_id'].", "
-				 .$_GET['stat_id'].", "
-				 .$_GET['statLowerBound'].", "
-				 .$_GET['statUpperBound'].")";
+		VALUES (".$_GET['patient_id'].", ".$_GET['stat_id'].", ".$_GET['statLowerBound'].", ".$_GET['statUpperBound'].")";
 
 if ($con->query($sql) == TRUE) {
     echo "New record created successfully";

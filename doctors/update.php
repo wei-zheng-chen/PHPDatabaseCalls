@@ -18,7 +18,7 @@ $sql = "UPDATE doctors
 
 
 if ($con->query($sql) == TRUE) {
-    echo "New record created successfully";
+    echo "updated record successfully\n";
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
