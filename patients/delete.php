@@ -20,6 +20,20 @@ if($con->query($sql) == TRUE){
 	}else{
 			echo "Error: " . $sql . "<br>" . $con->error;
 	}
+	//update notifications
+	$sql = "DELETE FROM notifications WHERE patient_id = ".$_GET['patient_id'];
+	if($con->query($sql) == TRUE){
+		echo "deletion from notifications is successful";
+	}else{
+			echo "Error: " . $sql . "<br>" . $con->error;
+	}
+		//update bounds
+	$sql = "DELETE FROM bounds WHERE patient_id = ".$_GET['patient_id'];
+	if($con->query($sql) == TRUE){
+		echo "deletion from bounds is successful";
+	}else{
+			echo "Error: " . $sql . "<br>" . $con->error;
+	}
 
 }else{
 	echo "Error: " . $sql . "<br>" . $con->error;
