@@ -33,7 +33,11 @@ if ($result = mysqli_query($con, $sql))
     }
 
     // Finally, encode the array to JSON and output the results
-    echo json_encode($resultArray);
+    if(empty($resultArray)){
+        echo "Unknown Device"
+    }else{
+        echo json_encode($resultArray);
+    }
 }
 
 // Close connections
