@@ -15,7 +15,7 @@ if (mysqli_connect_errno())
 
 
 //insert a doct into table
-$sql = "INSERT INTO doctors (contactName, contactPhoneNumber) 
+$sql = "INSERT INTO contacts (contactName, contactPhoneNumber) 
 		VALUES (".$_GET['contactName'].", ".$_GET['contactPhoneNumber'].")";
 
 if ($con->query($sql) == TRUE) {
