@@ -20,7 +20,7 @@ if($_GET['stat_id']){
 
 
 // Check if there are results
-if ($result = mysqli_query($con, $sql)){
+if (!empty($result = mysqli_query($con, $sql))){
 	//if there is a result - update call
 	$sql = "UPDATE bounds
 		SET statLowerBound = ".$_GET['statLowerBound'].",
@@ -38,7 +38,7 @@ if ($result = mysqli_query($con, $sql)){
 }else{
 	//insert call
 	echo "I am here";
-	
+
 	$sqlInsert = "INSERT INTO bounds (patient_id, stat_id, statLowerBound, statUpperBound) 
 		VALUES (".$_GET['patient_id'].", ".$_GET['stat_id'].", ".$_GET['statLowerBound'].", ".$_GET['statUpperBound'].")";
 
