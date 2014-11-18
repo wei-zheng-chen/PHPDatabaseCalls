@@ -21,10 +21,20 @@ if($_GET['repeat'] !=""){
     if ($result = mysqli_query($con, $sql)) {
     // output data of each row
         $contactID = "";
-        while($row = $result->fetch_object()) {
-            echo $row ;
-            $contactID = $row["contact_id"];
+        // If so, then create a results array and a temporary one
+        // to hold the data
+        $resultArray = array();
+        $tempArray = array();
+
+    // Loop through each row in the result set
+         while($row = $result->fetch_object())
+        {
+        // Add each row into our results array
+            $tempArray = $row;
+            array_push($resultArray, $tempArray);
         }
+        echo $resultArray ;
+
         //updating notifications
         $sqlUpdate = "INSERT INTO notifications(patient_id,contact_id,stat_id)
                         VALUES(".$patientID.", ". $contactID .", ".$_GET['stat_id'].")";
