@@ -53,13 +53,14 @@ if ($con->query($sql) == TRUE) {
 	   $patientID = $_GET['patient_id'];
 //updating patients_doctors table
 	   if($patientID != ""){
+          $conId = $con->insert_id
 		  $sqlUpdate = "INSERT INTO patients_contacts (patient_id, contact_id)
-		      	  		  VALUES(".$patientID.", ". $con->insert_id .")";
+		      	  		  VALUES(".$patientID.", ". $conId .")";
 		  if ($con->query($sqlUpdate)) {
    	 	      	echo "New record in patients_contacts created successfully\n";
                 //updating notifications
                 $sqlUpdate = "INSERT INTO notifications(patient_id,contact_id,stat_id)
-                               VALUES(".$patientID.", ". $con->insert_id .", ".$_GET['stat_id'].")";
+                               VALUES(".$patientID.", ". $conId .", ".$_GET['stat_id'].")";
                 if($con->query($sqlUpdate)){
                     echo "New record in notifications created successfully\n";
                 }else{
