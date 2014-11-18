@@ -30,10 +30,11 @@ if($_GET['repeat'] !=""){
          while($row = $result->fetch_object())
         {
         // Add each row into our results array
+            $contactID = $row['contact_id'];
             $tempArray = $row;
             array_push($resultArray, $tempArray);
         }
-        var_dump($resultArray);
+        var_dump($resultArray[0]);
 
         //updating notifications
         $sqlUpdate = "INSERT INTO notifications(patient_id,contact_id,stat_id)
