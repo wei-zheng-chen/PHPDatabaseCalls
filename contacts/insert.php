@@ -16,13 +16,13 @@ if($_GET['repeat'] !=""){
     // get the contact id
     $sql = "SELECT contact_id
             FROM contacts
-            WHERE contactName =".$_GET['contactName']. "AND 
-            contactPhoneNumber =".$_GET['contactPhoneNumber'];
+            WHERE contactName =".$_GET['contactName']. "AND contactPhoneNumber =".$_GET['contactPhoneNumber'];
     
     if ($result = mysqli_query($con, $sql)) {
     // output data of each row
         $contactID = "";
         while($row = $result->fetch_object()) {
+            echo $row ;
             $contactID = $row["contact_id"];
         }
         //updating notifications
