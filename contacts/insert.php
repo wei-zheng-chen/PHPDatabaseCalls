@@ -17,7 +17,7 @@ if($_GET['repeat'] !=""){
     $sql = "SELECT contact_id
             FROM contacts
             WHERE contactName =".$_GET['contactName']. "AND 
-            WHERE contactPhoneNumber =".$_GET['contactPhoneNumber'];
+            contactPhoneNumber =".$_GET['contactPhoneNumber'];
     $result = mysqli_query($con, $sql);
 
     if ($result) {
