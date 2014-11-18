@@ -18,7 +18,7 @@ if($_GET['repeat'] !=""){
             FROM contacts
             WHERE contactName =".$_GET['contactName']. "AND 
             WHERE contactPhoneNumber =".$_GET['contactPhoneNumber'];
-    $result = $conn->query($sql);
+    $result = $con->query($sql);
 
     if ($result->num_rows > 0) {
     // output data of each row
@@ -32,13 +32,14 @@ if($_GET['repeat'] !=""){
         if($con->query($sqlUpdate)){
             echo "New record in notifications created successfully\n";
         }else{
-            echo "Error: " . $sql . "<br>" . $con->error ."\n";
+            echo "Error: " . $sqlUpdate . "<br>" . $con->error ."\n";
         }
 
 
     } else {
         echo "contact_id does not exist";
     }
+    echo "repeated insert";
 
 }else{
 
@@ -62,17 +63,19 @@ if ($con->query($sql) == TRUE) {
                 if($con->query($sqlUpdate)){
                     echo "New record in notifications created successfully\n";
                 }else{
-                    echo "Error: " . $sql . "<br>" . $con->error ."\n";
+                    echo "Error: " . $sqlUpdate . "<br>" . $con->error ."\n";
                 }
 
 		  } else {
-    		  echo "Error: " . $sql . "<br>" . $con->error ."\n";
-    		
+    		  echo "Error: " . $sqlUpdate . "<br>" . $con->error ."\n";
+    		  //remove since insert in to patient_contact failes
     		  $sqlUpdate = "DELETE FROM contacts 
     					  WHERE contact_id =" .$con->insert_id;
     		  if($con->query($sqlUpdate)){
     			 echo "The recently inserted contacts has been removed from the database since patients did not exist";
-    		  }
+    		  }else{
+                echo "Error: " . $sqlUpdate . "<br>" . $con->error ."\n";
+              }
 		  }
 	   }
 
