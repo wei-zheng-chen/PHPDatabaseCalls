@@ -53,7 +53,7 @@ if ($con->query($sql) == TRUE) {
 	   $patientID = $_GET['patient_id'];
 //updating patients_doctors table
 	   if($patientID != ""){
-          $conId = $con->insert_id
+          $conId = $con->insert_id;
 		  $sqlUpdate = "INSERT INTO patients_contacts (patient_id, contact_id)
 		      	  		  VALUES(".$patientID.", ". $conId .")";
 		  if ($con->query($sqlUpdate)) {
