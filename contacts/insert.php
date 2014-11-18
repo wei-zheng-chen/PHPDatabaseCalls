@@ -33,11 +33,11 @@ if($_GET['repeat'] !=""){
             $tempArray = $row;
             array_push($resultArray, $tempArray);
         }
-        echo $resultArray ;
+        var_dump($resultArray);
 
         //updating notifications
         $sqlUpdate = "INSERT INTO notifications(patient_id,contact_id,stat_id)
-                        VALUES(".$patientID.", ". $contactID .", ".$_GET['stat_id'].")";
+                        VALUES(".$_GET['patient_id'].", ". $contactID .", ".$_GET['stat_id'].")";
         if($con->query($sqlUpdate)){
             echo "New record in notifications created successfully\n";
         }else{
