@@ -18,9 +18,8 @@ if($_GET['repeat'] !=""){
             FROM contacts
             WHERE contactName =".$_GET['contactName']. "AND 
             contactPhoneNumber =".$_GET['contactPhoneNumber'];
-    $result = mysqli_query($con, $sql);
-
-    if ($result) {
+    
+    if ($result = mysqli_query($con, $sql)) {
     // output data of each row
         $contactID = "";
         while($row = $result->fetch_object()) {
@@ -37,6 +36,8 @@ if($_GET['repeat'] !=""){
 
 
     } else {
+        echo "Error: " . $sql . "<br>" . $con->error ."\n";
+
         echo "contact_id does not exist";
     }
     echo "repeated insert";
