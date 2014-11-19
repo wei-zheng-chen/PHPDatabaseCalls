@@ -26,7 +26,9 @@ if($_GET['repeat'] !=""){
          while($row = $result->fetch_object())
         {
         // Add each row into our results array
-            $contactID = $row->contact_id;
+            if($row->contact_id){
+              $contactID = $row->contact_id;
+            }
         }
         //updating notifications
         $sqlUpdate = "INSERT INTO notifications(patient_id,contact_id,stat_id)
