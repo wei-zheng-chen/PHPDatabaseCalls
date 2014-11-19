@@ -37,7 +37,7 @@ if ($result = mysqli_query($con, $sql))
 
         //added the unknow patient id
         $sql = "INSERT INTO patients(patient_id, patientName) 
-                VALUES (".$_GET['patient_id'].", [unknown] )";
+                VALUES (".$_GET['patient_id'].", '[unknown]' )";
 
         if ($con->query($sql) == TRUE) {
          echo "New record created successfully";
