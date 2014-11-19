@@ -49,6 +49,7 @@ if ($result = mysqli_query($con, $sql))
         if($_GET['patient_id']){
             $sqlretrieve = $sqlretrieve . " WHERE patient_id = ".$_GET['patient_id'];
         }
+	
 
         // Check if there are results
         if ($result = mysqli_query($con, $sqlretrieve)){
@@ -56,24 +57,26 @@ if ($result = mysqli_query($con, $sql))
             // to hold the data
             $resultArray = array();
             $tempArray = array();
-
+	
             // Loop through each row in the result set
             while($row = $result->fetch_object())
             {
-        // Add each row into our results array
-                $tempArray = $row;
+        // Add each row into our results array 
+	       $tempArray = $row;
                 array_push($resultArray, $tempArray);
             }
-
+//	echo "after while";
         // Finally, encode the array to JSON and output the results
                 if(empty($resultArray)){
                     echo "something has gone wrong, cant retrive the patient id". $_GET['patient_id'];
-                }
+                
             }else{
+//		echo "here in json";
                 echo json_encode($resultArray);
             }
-            
-        } else {
+        } 
+        
+	} else {
           echo "Error: " . $sql . "<br>" . $con->error;
         }
 
