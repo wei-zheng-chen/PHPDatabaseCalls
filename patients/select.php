@@ -40,18 +40,18 @@ if ($result = mysqli_query($con, $sql))
                 VALUES (".$_GET['patient_id'].", '[unknown]' )";
 
         if ($con->query($sql) == TRUE) {
-         echo "New record created successfully";
-         
+         // echo "New record created successfully";
+
          //retrive the unknown patient id again
-        $sql = "SELECT ".$_GET['attribute'] ." 
+        $sqlretrieve = "SELECT ".$_GET['attribute'] ." 
         FROM patients";
 
         if($_GET['patient_id']){
-            $sql = $sql . " WHERE patient_id = ".$_GET['patient_id'];
+            $sqlretrieve = $sqlretrieve . " WHERE patient_id = ".$_GET['patient_id'];
         }
 
         // Check if there are results
-        if ($result = mysqli_query($con, $sql)){
+        if ($result = mysqli_query($con, $sqlretrieve)){
              // If so, then create a results array and a temporary one
             // to hold the data
             $resultArray = array();
@@ -66,12 +66,13 @@ if ($result = mysqli_query($con, $sql))
             }
 
         // Finally, encode the array to JSON and output the results
-            if(empty($resultArray)){
-                echo "something has gone wrong, cant retrive the patient id". $_GET['patient_id'];
-            }
-        }else{
+                if(empty($resultArray)){
+                    echo "something has gone wrong, cant retrive the patient id". $_GET['patient_id'];
+                }
+            }else{
                 echo json_encode($resultArray);
             }
+            
         } else {
           echo "Error: " . $sql . "<br>" . $con->error;
         }
