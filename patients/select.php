@@ -41,11 +41,8 @@ if ($result = mysqli_query($con, $sql))
 
         if ($con->query($sql) == TRUE) {
          echo "New record created successfully";
-        } else {
-          echo "Error: " . $sql . "<br>" . $con->error;
-        }
-
-        //retrive the unknown patient id again
+         
+         //retrive the unknown patient id again
         $sql = "SELECT ".$_GET['attribute'] ." 
         FROM patients";
 
@@ -75,6 +72,9 @@ if ($result = mysqli_query($con, $sql))
         }else{
                 echo json_encode($resultArray);
             }
+        } else {
+          echo "Error: " . $sql . "<br>" . $con->error;
+        }
 
     }else{
         echo json_encode($resultArray);
