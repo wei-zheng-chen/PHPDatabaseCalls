@@ -21,7 +21,7 @@ if($_GET['repeat'] !=""){
     if ($result = mysqli_query($con, $sql)) {
     // output data of each row
         $contactID = "";
-        var_dump($result)
+        var_dump($result);
     // Loop through each row in the result set
          while($row = $result->fetch_object())
         {
