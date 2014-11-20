@@ -66,12 +66,20 @@ if ($con->query($sql) == TRUE) {
    	 	      	echo "New record in patients_contacts created successfully\n";
                 //updating notifications
                 if($_GET['stat_id']){
-                    $sqlUpdate = "INSERT INTO notifications(patient_id,contact_id,stat_id)
-                               VALUES(".$patientID.", ". $conId .", ".$_GET['stat_id'].")";
-                    if($con->query($sqlUpdate)){
-                       echo "New record in notifications created successfully\n";
+                    if($_GET['textsOn'] && $_GET['callsOn']){
+
+                        $sql = "INSERT INTO notifications (patient_id, contact_id, stat_id, callsOn, textsOn) 
+                                VALUES (".$_GET['patient_id'].", ".$_GET['contact_id'].", ".$_GET['stat_id'].", ".$_GET['callsOn']. ", ". $_GET['textsOn'].")";
+
                     }else{
-                      echo "Error: " . $sqlUpdate . "<br>" . $con->error ."\n";
+
+                        $sql = "INSERT INTO notifications (patient_id, contact_id, stat_id) 
+                                VALUES (".$_GET['patient_id'].", ".$_GET['contact_id'].", ".$_GET['stat_id'].")";
+                    }
+                    if ($con->query($sql) == TRUE) {
+                        echo "New record created successfully";
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $con->error;
                     }
                 }
 
