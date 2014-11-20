@@ -12,7 +12,7 @@ if (mysqli_connect_errno())
 if($_GET['textsOn'] && $_GET['callsOn']){
 
 $sql = "INSERT INTO notifications (patient_id, contact_id, stat_id, callsOn, textsOn) 
-		VALUES (".$_GET['patient_id'].", ".$_GET['contact_id'].", ".$_GET['stat_id'].", ".$_GET['callsOn']. ", " $_GET['textsOn'].")";
+		VALUES (".$_GET['patient_id'].", ".$_GET['contact_id'].", ".$_GET['stat_id'].", ".$_GET['callsOn']. ", ". $_GET['textsOn'].")";
 
 }else{
 
