@@ -34,6 +34,7 @@ if($_GET['repeat'] !=""){
 
         $sql = "INSERT INTO notifications (patient_id, contact_id, stat_id, callsOn, textsOn) 
                 VALUES (".$_GET['patient_id'].", ".$contactID.", ".$_GET['stat_id'].", ".$_GET['callsOn']. ", ". $_GET['textsOn'].")";
+        echo $sql;
 
         if ($con->query($sql) == TRUE) {
             echo "New record created successfully";
