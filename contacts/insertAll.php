@@ -16,7 +16,6 @@ $sql = "INSERT INTO contacts (contactName, contactPhoneNumber)
 
 if ($con->query($sql) == TRUE) {
 
-        echo "New record created in contacts successfully\n";
 	   $patientID = $_GET['patient_id'];
 //updating patients_doctors table
 	   if($patientID != ""){
@@ -24,9 +23,9 @@ if ($con->query($sql) == TRUE) {
 		  $sqlUpdate = "INSERT INTO patients_contacts (patient_id, contact_id)
 		      	  		  VALUES(".$patientID.", ". $conId .")";
 		  if ($con->query($sqlUpdate)) {
-   	 	      	echo "New record in patients_contacts created successfully\n";
                 //updating notifications
             $statList = array(7,1,6,9);
+            echo $conId;
 
             foreach ($statList as $stat_id){
 
@@ -34,7 +33,6 @@ if ($con->query($sql) == TRUE) {
                                 VALUES (".$_GET['patient_id'].", '".$conId."', ".$stat_id.")";
 
                     if ($con->query($sql) == TRUE) {
-                        echo "New record created successfully";
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
                     }
