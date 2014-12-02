@@ -26,7 +26,7 @@ if ($result = mysqli_query($con, $sql))
     while($row = $result->fetch_object())
     {
         // Add each row into our results array
-        $tempArray = $row;
+        $tempArray = $row->contact_id;
         array_push($resultArray, $tempArray);
     }
 
