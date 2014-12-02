@@ -11,7 +11,7 @@ if (mysqli_connect_errno())
 
 $sql = "SELECT contact_id
         FROM notifications
-        WHERE patient_id = ".$_GET['patient_id']." AND textsOn = '1'";
+        WHERE patient_id = ".$_GET['patient_id']." AND stat_id =".$_GET['stat_id']." AND textsOn = '1'";
 
 
 // Check if there are results
