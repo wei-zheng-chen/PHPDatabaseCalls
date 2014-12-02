@@ -29,7 +29,6 @@ if ($con->query($sql) == TRUE) {
             $statList = array(7,1,6,9);
 
             foreach ($statList as $stat_id){
-                if($_GET['stat_id']){
 
                     $sql = "INSERT INTO notifications (patient_id, contact_id, stat_id) 
                                 VALUES (".$_GET['patient_id'].", '".$conId."', ".$stat_id.")";
@@ -39,7 +38,6 @@ if ($con->query($sql) == TRUE) {
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
                     }
-                }
             }
 
 		  } else {
