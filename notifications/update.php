@@ -19,7 +19,7 @@ $sql = "UPDATE notifications
 
 
 if ($con->query($sql) == TRUE) {
-    echo "updated record successfully\n";
+    echo "updated record successfully notifications record all\n";
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
