@@ -29,9 +29,14 @@ if ($result = mysqli_query($con, $sql))
         $tempArray = $row;
         array_push($resultArray, $tempArray);
     }
+    echo $resultArray
+    //get contact
+    $sql ="SELECT * 
+           FROM contacts
+           WHERE contact_id IN "
 
     // Finally, encode the array to JSON and output the results
-    echo json_encode($resultArray);
+    // echo json_encode($resultArray);
 }
 
 // Close connections
