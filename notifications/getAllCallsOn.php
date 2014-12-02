@@ -9,7 +9,7 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$sql = "SELECT *
+$sql = "SELECT contact_id
         FROM notifications
         WHERE patient_id = ".$_GET['patient_id']." AND callsOn = '1'";
 
