@@ -9,9 +9,11 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$sql = "SELECT contact_id
-        FROM notifications
-        WHERE patient_id = ".$_GET['patient_id']." AND stat_id =".$_GET['stat_id']." AND callsOn = '1'";
+$sql = "SELECT * 
+        FROM contacts
+        WHERE contact_id IN (SELECT contact_id
+                             FROM notifications
+                             WHERE patient_id = ".$_GET['patient_id']." AND stat_id =".$_GET['stat_id']." AND callsOn = '1')";
 
 
 // Check if there are results
